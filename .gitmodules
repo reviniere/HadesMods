@@ -1,0 +1,3 @@
+[submodule "TwitchControl"]
+	path = TwitchControl
+	url = https://github.com/reviniere/TwitchControl
