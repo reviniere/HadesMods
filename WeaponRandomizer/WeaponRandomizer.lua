@@ -23,17 +23,18 @@ function WR.RandomWeapon()
   if newWeaponData then
     RemoveTrait(CurrentRun.Hero, currentWeapon.Aspect)
     EquipPlayerWeapon( WeaponData[newWeaponData.Name], { PreLoadBinks = true } )
-    AddTraitToHero({ TraitName = newWeaponAspect, Rarity = "Legendary" })
+    AddTraitToHero({ TraitName = newWeaponAspect.Name, Rarity = "Legendary" })
+    ModUtil.Hades.PrintOverhead("Equipped " .. newWeaponAspect.FriendlyName, 2)
   end
 end
 
 function WR.GetEquippedWeaponAspect()
   for i, currentWeaponData in ipairs(WR.WeaponAspectData) do
     for i, aspectTrait in ipairs(currentWeaponData.Aspects) do
-      if HeroHasTrait(aspectTrait) then
+      if HeroHasTrait(aspectTrait.Name) then
         return {
           Weapon = currentWeaponData.Name,
-          Aspect = aspectTrait,
+          Aspect = aspectTrait.Name,
         }
       end
     end
@@ -44,57 +45,129 @@ WR.WeaponAspectData = {
   [1] = {
       Name = "SwordWeapon",
       Aspects = {
-         [1] = "SwordBaseUpgradeTrait",
-         [2] = "SwordCriticalParryTrait",
-         [3] = "DislodgeAmmoTrait",
-         [4] = "SwordConsecrationTrait",
+         [1] = { 
+          Name="SwordBaseUpgradeTrait",
+          FriendlyName="Zagreus Sword"
+         },
+         [2] = { 
+          Name="SwordCriticalParryTrait",
+          FriendlyName="Nemesis Sword"
+         },
+         [3] = { 
+          Name="DislodgeAmmoTrait",
+          FriendlyName="Poseidon Sword"
+         },
+         [4] = { 
+          Name="SwordConsecrationTrait",
+          FriendlyName="Arthur Sword"
+         }
       }
   },
   [2] = {
       Name = "SpearWeapon",
       Aspects = {
-          [1] = "SpearBaseUpgradeTrait",
-          [2] = "SpearTeleportTrait",
-          [3] = "SpearWeaveTrait",
-          [4] = "SpearSpinTravel",            
+          [1] = { 
+            Name="SpearBaseUpgradeTrait",
+            FriendlyName="Zagreus Spear"
+           },
+          [2] = { 
+            Name="SpearTeleportTrait",
+            FriendlyName="Achilles Spear"
+           },
+          [3] = { 
+            Name="SpearWeaveTrait",
+            FriendlyName="Hades Spear"
+           },
+          [4] = { 
+            Name="SpearSpinTravel", 
+            FriendlyName="Guan Yu Spear"
+           }      
       }
   },
   [3] = {
       Name = "ShieldWeapon",
       Aspects = {
-          [1] = "ShieldBaseUpgradeTrait",
-          [2] = "ShieldRushBonusProjectileTrait",
-          [3] = "ShieldTwoShieldTrait",
-          [4] = "ShieldLoadAmmoTrait",
+          [1] = { 
+            Name="ShieldBaseUpgradeTrait",
+            FriendlyName="Zagreus Shield"
+           },
+          [2] = { 
+            Name="ShieldRushBonusProjectileTrait",
+            FriendlyName="Chaos Shield"
+           },
+          [3] = { 
+            Name="ShieldTwoShieldTrait",
+            FriendlyName="Zeus Shield"
+           },
+          [4] = { 
+            Name="ShieldLoadAmmoTrait",
+            FriendlyName="Beowulf Shield"
+           }
       }
   },
   [4] = {
       Name = "BowWeapon",
       Aspects = {
-          [1] = "BowBaseUpgradeTrait",
-          [2] = "BowMarkHomingTrait",
-          [3] = "BowLoadAmmoTrait",
-          [4] = "BowBondTrait",
+          [1] = { 
+            Name="BowBaseUpgradeTrait",
+            FriendlyName="Zagreus Bow"
+           },
+          [2] = { 
+            Name="BowMarkHomingTrait",
+            FriendlyName="Chiron Bow"
+           },
+          [3] = { 
+            Name="BowLoadAmmoTrait",
+            FriendlyName="Hera Bow"
+           },
+          [4] = { 
+            Name="BowBondTrait",
+            FriendlyName="Rama Bow"
+           }
       }
   },
   [5] = {
       Name = "FistWeapon",
       Aspects = {
-          [1] = "FistBaseUpgradeTrait",
-          [2] = "FistVacuumTrait",
-          [3] = "FistWeaveTrait",
-          [4] = "FistDetonateTrait",
+          [1] = { 
+            Name="FistBaseUpgradeTrait",
+            FriendlyName="Zagreus Fists"
+           },
+          [2] = { 
+            Name="FistVacuumTrait",
+            FriendlyName="Talos Fists"
+           },
+          [3] = { 
+            Name="FistWeaveTrait",
+            FriendlyName="Demeter Fists"
+           },
+          [4] = { 
+            Name="FistDetonateTrait",
+            FriendlyName="Gilgamesh Fists"
+           }
       }
   },
   [6] = {
       Name = "GunWeapon",
       Aspects = {
-          [1] = "GunBaseUpgradeTrait",
-          [2] = "GunGrenadeSelfEmpowerTrait",
-          [3] = "GunManualReloadTrait",
-          [4] = "GunLoadedGrenadeTrait",
+          [1] = { 
+            Name="GunBaseUpgradeTrait",
+            FriendlyName="Zagreus Rail"
+           },
+          [2] = { 
+            Name="GunGrenadeSelfEmpowerTrait",
+            FriendlyName="Eris Rail"
+           },
+          [3] = { 
+            Name="GunManualReloadTrait",
+            FriendlyName="Hestia Rail"
+           },
+          [4] = { 
+            Name="GunLoadedGrenadeTrait",
+            FriendlyName="Lucifer Rail"
+           }
       }
-  },
+  }
 }
 
 function WR.CustomAnvil()
